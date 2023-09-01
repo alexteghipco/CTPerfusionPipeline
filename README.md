@@ -4,7 +4,7 @@ This code replicates the CT perfusion preprocessing pipeline from Teghipco, A., 
 
 ## Usage
 
-Input images should be NIfTI (.nii or .nii.gz) images. These can be created from DICOM using [dcm2niix](https://github.com/rordenlab/dcm2niix).
+Input images should be NIfTI (.nii or .nii.gz in which case they will be manually uncompressed). These can be created from DICOM using [dcm2niix](https://github.com/rordenlab/dcm2niix).
 
 It's assumed that you are working with perfusion measure images output by RAPID (e.g., RAPID_rCBV_331.nii) and CTA head/neck images (e.g., CTA_Head_Neck_4.nii.gz). Please see documentation in ct_rgb.m for the script that does the majority of the work. Additionally, see runPipeline.m for more information on setting up the pipeline (including example calls).
 
@@ -16,9 +16,9 @@ It's assumed that you are working with perfusion measure images output by RAPID 
 
 ## Summary
 
-See documentation for full pipeline; the two sets of images will be co-registered, then normalized. Using the resulting transforms, an atlas (e.g., JHU atlas) will be brought into native space. You can then use scalar_atlas.m to extract perfusion measures within each ROI of the atlas. 
+See documentation for full pipeline details. The two sets of images will be co-registered, then normalized. Using the resulting transforms, an atlas (e.g., JHU atlas) will be brought into native space. You can then use scalar_atlas.m and MatFilesFromNativeSpaceImageAndAtlas.m to extract perfusion measures within each ROI of the atlas. 
 
-## Methods
+## Methods overview
 
 The CT RAPID sequence acquired 44 volumes each with 512x512x49 voxels and a resolution of 0.4x0.4x3.0mm, which we refer to as the structural scan. Based on this raw data, Siemens proprietary software generated maps for mean-time-to-transit (MTT), cerebral blood flow (CBF) and crebral blood flow (CBV) each with 256x286x15 voxels with a resolution of 0.8x0.8x10mm. These derived images are stored in a proprietary red-green-blue (RGB) color scheme.
 
