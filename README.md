@@ -13,10 +13,11 @@ It's assumed that you are working with perfusion measure images output by RAPID 
 * MATLAB (for running the pipeline)
 * SPM12 (for co-registration, normalization)
 * FSL (for bet)
+* NiiStat and some matlab code from freesurfer is optional for organizing atlas-based perfusion measures (needed for MatFilesFromNativeSpaceImageAndAtlas.m)
 
 ## Summary
 
-See documentation for full pipeline details. The two sets of images will be co-registered, then normalized. Using the resulting transforms, an atlas (e.g., JHU atlas) will be brought into native space. You can then use scalar_atlas.m and MatFilesFromNativeSpaceImageAndAtlas.m to extract perfusion measures within each ROI of the atlas. 
+See documentation for full pipeline details. The two sets of images will be co-registered, then normalized. Using the resulting transforms, an atlas (e.g., JHU atlas) will be brought into native space. You can then use scalar_atlas.m and MatFilesFromNativeSpaceImageAndAtlas.m to extract perfusion measures within each ROI of the atlas and generate global mean scaled and global scaled images that are organized within a .mat structure.
 
 ## Methods overview
 
