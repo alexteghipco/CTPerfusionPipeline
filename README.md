@@ -4,7 +4,7 @@ This code replicates the CT perfusion preprocessing pipeline from Teghipco, A., 
 
 ## Usage
 
-Input images should be NIfTI (.nii or .nii.gz in which case they will be manually uncompressed). These can be created from DICOM using [dcm2niix](https://github.com/rordenlab/dcm2niix).
+Input images should be NIfTI (.nii or .nii.gz in which case they will be automatically uncompressed). These can be created from DICOM using [dcm2niix](https://github.com/rordenlab/dcm2niix).
 
 It's assumed that you are working with perfusion measure images output by RAPID and CTA head/neck images. Please see documentation in ct_rgb.m for the script that does the majority of the work. Additionally, see runPipeline.m for more information on setting up the pipeline (including example calls).
 
@@ -29,4 +29,4 @@ SPM12's realignment function was used to create a mean image of the structural s
 
 ## Parting tips
 
-Coregistration and/or normalization may fail for some individuals. It's important to manually inspect all outputs. In my experience, this usually occurs because of poor brain extraction. See ctp_rgb.m for more information on how to run the pre-BET pipeline so that you can manually attempt different bet options to improve extraction (see runPipeline.m for effective strategies). You can then run ctp_rgb.m again using the post-bet pipeline. Even with good brain extraction, it is possible for normalization to be poor when signal is lower. This can be remedied by increasing the smoothing parameters for the reference image *only* by 2mm. In some participants, smoothing may need to be increased to 6mm to achieve serviceable results (see optional arguments for ctp_rgb.m)
+This version of ctp_rgb.m can independently run portions of the pipeline. This is helpful because coregistration and/or normalization may fail for some individuals. It's important to manually inspect all outputs. In my experience, this usually occurs because of poor brain extraction. See ctp_rgb.m for more information on how to run the pre-BET pipeline so that you can manually attempt different bet options to improve extraction (see runPipeline.m for effective strategies for improving extraction). You can then run ctp_rgb.m again using the post-bet pipeline. Even with good brain extraction, it is possible for normalization to be poor when signal is lower. This can be remedied by increasing the smoothing parameters for the reference image *only* by 2mm. In some participants, smoothing may need to be increased to 6mm to achieve serviceable results (see optional arguments for ctp_rgb.m)
